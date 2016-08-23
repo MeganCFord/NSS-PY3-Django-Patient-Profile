@@ -1,0 +1,13 @@
+<h1>Patient Name: {{ patient.name }}</h1>
+<h2>Birthday: {{patient.birthday}}</h2>
+<h3>Last Seen: {{patient.last_seen}}</h3>
+<h4>Ailments:</h4>
+{% if ailments %}
+  <ul>
+  {% for ailment in ailment_list %}
+    <li><a href="/patientprofiles/ailment/{{ ailment.id}}/">{{ ailment.name }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No Ailments Yet!</p>
+{% endif %}

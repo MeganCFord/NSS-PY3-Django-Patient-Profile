@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
 
 from .models import Patient, Ailment, Medication
@@ -12,7 +12,8 @@ def index(request):
   return render(request, "patientprofiles/index.html", context)
 # I need a patient view detail thing,
 def patient(request, patient_id):
-  return HttpResponse("view patient here.")
+    patient = get_object_or_404(Patient, pk=patient_id)
+    return render(request, "patientprofiles/patient.html", {"patient": patient})
 # I need an ailment view detail thing (linked through patient and through medication)
 def ailment(request, ailment_id):
   return HttpResponse("view ailment here.")
